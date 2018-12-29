@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import Posts from './posts/Posts';
+import { Header, Footer } from './Components/HeaderFooter'
+import pink from '@material-ui/core/colors/pink';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: pink
+    }
+})
 
 class App extends Component {
 
@@ -15,9 +24,9 @@ class App extends Component {
 
     fetchData = () => {
         let urls = [
-            'https://www.reddit.com/r/skincareaddiction/top.json?limit=3',
-            'https://www.reddit.com/r/naturalbeauty/top.json?limit=3',
-            'https://www.reddit.com/r/AsianBeauty/top.json?limit=3',
+            'https://www.reddit.com/r/skincareaddiction/top.json?limit=5',
+            'https://www.reddit.com/r/naturalbeauty/top.json?limit=5',
+            'https://www.reddit.com/r/AsianBeauty/top.json?limit=5',
         ];
 
         Promise.all(urls.map(url =>
@@ -38,10 +47,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-          <h1>FABULOUS</h1>
-          <Posts posts={this.state.posts} />
-      </div>
+        <MuiThemeProvider theme={theme}>
+
+            <Header />
+              <div className="App">
+                  <h1>Reddit Beauty</h1>
+                  <Posts posts={this.state.posts} />
+              </div>
+            <Footer />
+
+        </MuiThemeProvider>
+
     );
   }
 }
