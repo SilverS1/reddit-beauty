@@ -14,7 +14,9 @@ const styles = theme => ({
    button: {
     margin: theme.spacing.unit,
     textTransform: 'none',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    maxWidth: '80%',
+    minWidth: '13%'
   },
 });
 
@@ -29,12 +31,21 @@ const Posts = (posts) => {
                 posts.posts.map((post, key) => {
                 	console.log(post.data)
                     return(
-                        <Paper key={key} className={classes.root} elevation={1}>
+                        <Paper 
+                            key={key} 
+                            className={classes.root} 
+                            elevation={1}
+                            data-subreddit={post.data.subreddit}
+                            >
                             <Typography component="p">
-                                <a href={post.data.url}>
+                                <a href={post.data.url} >
+                                    <Button variant="contained" color="primary" className={classes.button}>
+                                        {post.data.subreddit}
+                                    </Button>
                                     <Button variant="contained" className={classes.button}>
                                         {post.data.title}
                                     </Button>
+                                    
                                 </a>
                             </Typography>
                         </Paper>

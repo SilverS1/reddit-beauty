@@ -24,9 +24,13 @@ class App extends Component {
 
     fetchData = () => {
         let urls = [
-            'https://www.reddit.com/r/skincareaddiction/top.json?limit=5',
+            'https://www.reddit.com/r/skincareaddiction/top.json?limit=7',
             'https://www.reddit.com/r/naturalbeauty/top.json?limit=5',
             'https://www.reddit.com/r/AsianBeauty/top.json?limit=5',
+            'https://www.reddit.com/r/skincareaddictionUK/top.json?limit=5',
+            'https://www.reddit.com/r/femalefashionadvice/top.json?limit=8',
+            'https://www.reddit.com/r/koreanbeauty/top.json?limit=5',
+            'https://www.reddit.com/r/HaircareScience/top.json?limit=2',
         ];
 
         Promise.all(urls.map(url =>
