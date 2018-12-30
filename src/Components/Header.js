@@ -21,7 +21,7 @@ const Header = (props) => {
 	      <AppBar position="static" color="primary">
 	        <Toolbar>
 	          <Typography variant="h6" color="inherit">
-	            Lovely Header
+	            Reddit Beauty
 	          </Typography>
 	        </Toolbar>
 	      </AppBar>

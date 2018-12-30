@@ -1,17 +1,52 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+  },
+   button: {
+    margin: theme.spacing.unit,
+    textTransform: 'none',
+    textDecoration: 'none'
+  },
+});
+
 
 const Posts = (posts) => {
 
+    const { classes } = posts;
+
     return (
-        <ul>
+        <div>
             {
                 posts.posts.map((post, key) => {
                 	console.log(post.data)
-                    return(<li key={key}>{post.data.title}</li>)
+                    return(
+                        <Paper key={key} className={classes.root} elevation={1}>
+                            <Typography component="p">
+                                <a href={post.data.url}>
+                                    <Button variant="contained" className={classes.button}>
+                                        {post.data.title}
+                                    </Button>
+                                </a>
+                            </Typography>
+                        </Paper>
+                    )
                 })
             }
-        </ul>
+        </div>
     );
 }
 
-export default Posts;
+Posts.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Posts);

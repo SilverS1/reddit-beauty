@@ -51,7 +51,6 @@ class App extends Component {
 
             <Header />
               <div className="App">
-                  <h1>Reddit Beauty</h1>
                   <Posts posts={this.state.posts} />
               </div>
             <Footer />
